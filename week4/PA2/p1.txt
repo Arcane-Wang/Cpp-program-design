@@ -1,0 +1,10 @@
+Complex& operator=(const char * s){
+    char * p = new char[strlen(s) + 1];
+    strcpy(p, s);
+    char * p1 = strtok(p, "+");
+    char * p2 = strtok(NULL, "i");
+    r = atof(p1);
+    i = atof(p2);
+    delete [] p;
+    return *this;
+}

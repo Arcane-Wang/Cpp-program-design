@@ -1,0 +1,60 @@
+class MyString:public string{
+public:
+    MyString():string(){}
+
+    MyString(const char * s):string(s){}
+
+    MyString(const MyString & s):string(s){}
+
+    MyString(const string & s):string(s){}
+
+    MyString operator()(int start, int length){
+        return MyString(this->substr(start, length));
+    }
+
+    MyString & operator=(const char * s){
+        string::operator=(s);
+        return *this;
+    }
+
+    MyString & operator=(const MyString & s){
+        string::operator=(s);
+        return *this;
+    }
+
+    MyString operator+(const MyString & s){
+        MyString temp;
+        temp = *this;
+        temp.append(s);
+        return temp;
+    }
+
+    MyString operator+(const char * s){
+        MyString temp;
+        temp = *this;
+        temp.append(s);
+        return temp;
+    }
+
+    friend MyString operator+(const char * s, const MyString & ms){
+        MyString temp;
+        temp = s;
+        temp.append(ms);
+        return temp;
+    }
+
+    MyString & operator+=(const char * s){
+        this->append(s);
+        return *this;
+    }
+
+    MyString & operator+=(const MyString & s){
+        this->append(s);
+        return *this;
+    }
+
+    // friend ostream & operator<<(ostream & os, const MyString & s){
+    //     os << s.c_str();
+    //     return os;
+    // }
+};
