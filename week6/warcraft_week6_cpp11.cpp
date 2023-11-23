@@ -11,7 +11,7 @@
 #define WIN 1
 #define LOSE 2
 
-#define USE_INPUT_FILE 0
+#define USE_INPUT_FILE 1
 
 using namespace std;
 class Weapon;
@@ -1504,6 +1504,11 @@ int main()
         currentMin = 0;
         currentTime = 0;
         run(red, blue, cities);
+
+        for (int j = 0; j < N + 2; j++)
+        {
+            delete cities[j];
+        }
     }
     return 0;
 }
