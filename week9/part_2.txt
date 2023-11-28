@@ -1,0 +1,11 @@
+template <class T>
+class CMyistream_iterator
+{
+    private:
+        istream & is;
+        T value;
+    public:
+        CMyistream_iterator(istream & i):is(i) { is >> value; }
+        T operator *() { return value; }
+        void operator ++(int) { is >> value; }
+};
