@@ -1,0 +1,7 @@
+    void operator+(const Number & n) {
+        num += n.num;
+    }
+
+    int & value() {
+        return num;
+    }

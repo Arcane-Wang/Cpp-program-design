@@ -1,0 +1,26 @@
+bool operator < (const class A& a1, const class A &a2) {
+        return a1.get_size() < a2.get_size();
+}
+
+template <class T>
+class MyLarge {
+public:
+        bool operator()(const T &a1, const T &a2) {
+                return a1.get_name() < a2.get_name();
+        }
+};
+
+
+class Print {
+public:
+        void operator()(const A &a) {
+                cout << a << " ";
+        }
+};
+
+template <class T>
+void Show(T begin, T end, Print p) {
+        for (T it = begin; it != end; it++) {
+                p(*it);
+        }
+}

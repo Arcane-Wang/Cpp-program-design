@@ -1,0 +1,10 @@
+    Number operator*(const Number & n) {
+        return Number(num * n.num);
+    }
+    operator int() {
+        return num;
+    }
+    Number & operator=(const Number & n) {
+        num = n.num;
+        return *this;
+    }

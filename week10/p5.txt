@@ -1,0 +1,8 @@
+class CMy_add {
+        int & sum_;
+public:
+        CMy_add(int & sum): sum_(sum) {}
+        void operator()(int n) {
+                sum_ += n & 7;
+        }
+};

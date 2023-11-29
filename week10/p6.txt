@@ -1,0 +1,14 @@
+class MyString:public string{
+public:
+    MyString():string(){}
+
+    MyString(const char * s):string(s){}
+
+    MyString(const MyString & s):string(s){}
+
+    MyString(const string & s):string(s){}
+
+    MyString operator()(int start, int length){
+        return MyString(this->substr(start, length));
+    }
+};

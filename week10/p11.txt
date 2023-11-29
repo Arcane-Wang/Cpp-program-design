@@ -1,0 +1,58 @@
+#include <typeinfo>
+template <class T1, class T2, typename OP = std::greater<T1> >
+class MyMultimap : public std::multimap<T1, T2, OP>
+{
+public:
+    MyMultimap() : std::multimap<T1, T2, OP>(){};
+
+    template <class T3, class T4>
+    void Set(T3 in1, T4 in2)
+    {
+        typedef typename std::multimap<T1, T2, OP>::iterator iterator;
+        iterator it = this->begin();
+        if (typeid(T3) == typeid(std::string))
+        {
+            for (it = this->begin(); it != this->end();)
+            {
+                if (it->first == in1)
+                {
+                    this->insert(std::make_pair(it->first, in2));
+                    this->erase(it++);
+                }
+                else
+                {
+                    ++it;
+                }
+            }
+        }
+        else
+        {
+            std::multimap<T1, T2, OP> temp;
+            for (it = this->begin(); it != this->end(); ++it)
+            {
+                if (it->first == in1)
+                {
+                    temp.insert(std::make_pair(in1, in2));
+                }
+                else
+                {
+                    temp.insert(*it);
+                }
+            }
+            this->clear();
+            this->insert(temp.begin(), temp.end());
+        }
+    }
+};
+
+ostream &operator<<(ostream &o, const std::pair<const string, int> &s)
+{
+    o << "(" << s.first << "," << s.second << ")";
+    return o;
+}
+
+ostream &operator<<(ostream &o, const std::pair<const int, string> &s)
+{
+    o << "(" << s.first << "," << s.second << ")";
+    return o;
+}

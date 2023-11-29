@@ -1,0 +1,8 @@
+int(*fp)(int);
+int sum(int a[], int n, int(*fp)(int)){
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        sum += fp(a[i]);
+    }
+    return sum;
+}

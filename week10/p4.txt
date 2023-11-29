@@ -1,0 +1,18 @@
+class CType
+{
+    int n_;
+
+public:
+    void setvalue(int n) { n_ = n; };
+    int operator++(int)
+    {
+        int tmp = n_;
+        n_ *= n_;
+        return tmp;
+    }
+    friend ostream &operator<<(ostream &os, const CType &c)
+    {
+        os << c.n_;
+        return os;
+    }
+};
